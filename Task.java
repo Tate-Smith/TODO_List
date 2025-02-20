@@ -52,29 +52,41 @@ public class Task {
 	}
 	
 	public String toString() {
+		int length = 0;
+		if (description.length() >= name.length() && description.length() >= due_date.length()) {
+			length = description.length();
+		}
+		else if (name.length() >= description.length() && name.length() >= due_date.length()) {
+			length = name.length();
+		}
+		else {
+			length = due_date.length();
+		}
 		String str = "+-"; // top out line bar
-		for (int i = 0; i < description.length(); i++) str += "-";
+		for (int i = 0; i < length; i++) str += "-";
 		str += "-+\n";
 		
 		str += "| " + name; // name at the top
-		for (int i = 0; i < (description.length() - name.length()); i++) str += " ";
+		for (int i = 0; i < (length - name.length()); i++) str += " ";
 		str += " |\n";
 		
 		str += "| " + due_date; // then due_date, None if was never given one
-		for (int i = 0; i < (description.length() - due_date.length()); i++) str += " ";
+		for (int i = 0; i < (length - due_date.length()); i++) str += " ";
 		str += " |\n";
 		
 		String priority = " ";
 		if (this.getPriority()) priority = "+";
 		else priority = "-";
 		str += "| " + priority; // then priority, + if it is a priority blank if not
-		for (int i = 0; i < (description.length() - 1); i++) str += " ";
+		for (int i = 0; i < (length - 1); i++) str += " ";
 		str += " |\n";
 		
-		str += "| " + description + " |\n"; // lastly the description
+		str += "| " + description; // lastly the description
+		for (int i = 0; i < (length - description.length()); i++) str += " ";
+		str += " |\n";
 		
 		str += "+-";
-		for (int i = 0; i < description.length(); i++) str += "-";
+		for (int i = 0; i < length; i++) str += "-";
 		str += "-+\n"; // bottom bar
 		return str;
 	}
