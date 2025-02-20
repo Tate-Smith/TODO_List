@@ -1,3 +1,7 @@
+/*
+ * Main class that takes user input and displays the list
+ */
+
 package Model;
 
 import java.util.Scanner;

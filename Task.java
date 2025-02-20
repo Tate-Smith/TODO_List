@@ -19,10 +19,6 @@ public class Task {
 		this.due_date = "None";
 	}
 	
-	public void addDue_Date(String due_date) {
-		this.due_date = due_date;
-	}
-	
 	public void changePriority(Boolean priority) {
 		this.priority = priority;
 	}
@@ -56,29 +52,30 @@ public class Task {
 	}
 	
 	public String toString() {
-		String str = "+"; // top out line bar
+		String str = "+-"; // top out line bar
 		for (int i = 0; i < description.length(); i++) str += "-";
-		str += "+\n";
+		str += "-+\n";
 		
-		String space = "";
+		str += "| " + name; // name at the top
 		for (int i = 0; i < (description.length() - name.length()); i++) str += " ";
-		str += "| " + name + space + " |\n"; // name at the top
+		str += " |\n";
 		
-		space = "";
+		str += "| " + due_date; // then due_date, None if was never given one
 		for (int i = 0; i < (description.length() - due_date.length()); i++) str += " ";
-		str += "| " + due_date + space + " |\n"; // then due_date, None if was never given one
+		str += " |\n";
 		
-		space = "";
-		for (int i = 0; i < (description.length() - 1); i++) str += " ";
 		String priority = " ";
 		if (this.getPriority()) priority = "+";
-		str += "| " + priority + space + " |\n"; // then priority, + if it is a priority blank if not
+		else priority = "-";
+		str += "| " + priority; // then priority, + if it is a priority blank if not
+		for (int i = 0; i < (description.length() - 1); i++) str += " ";
+		str += " |\n";
 		
 		str += "| " + description + " |\n"; // lastly the description
 		
-		str += "+";
+		str += "+-";
 		for (int i = 0; i < description.length(); i++) str += "-";
-		str += "+\n"; // bottom bar
+		str += "-+\n"; // bottom bar
 		return str;
 	}
 }
