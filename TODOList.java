@@ -25,11 +25,16 @@ public class TODOList {
 		 * then just add to end of list
 		 */
 		if (task.getPriority()) {
-			for (int i = 0; i < todo_list.size(); i++) {
-				if (!todo_list.get(i).getPriority()) {
-					// if the task is not priority insert priority task here then break
-					todo_list.add(i, task);
-					break;
+			if (todo_list.size() == 0) {
+				todo_list.add(task);
+			}
+			else {
+				for (int i = 0; i < todo_list.size(); i++) {
+					if (!todo_list.get(i).getPriority()) {
+						// if the task is not priority insert priority task here then break
+						todo_list.add(i, task);
+						break;
+					}
 				}
 			}
 		}
