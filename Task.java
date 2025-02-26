@@ -19,6 +19,14 @@ public class Task {
 		this.due_date = "None";
 	}
 	
+	// copy constructor for deep copies of the TODOList
+	public Task(Task task) {
+		this.name = task.getName();
+		this.description = task.getDescription();
+		this.priority = task.getPriority();
+		this.due_date = task.getDue_Date();
+	}
+	
 	public void changePriority(Boolean priority) {
 		this.priority = priority;
 	}

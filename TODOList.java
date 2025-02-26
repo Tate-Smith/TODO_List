@@ -57,7 +57,13 @@ public class TODOList {
 	}
 	
 	public ArrayList<Task> getList() {
-		return new ArrayList<>(todo_list);
+		// deep copy of the list to avoid escaping references
+		ArrayList<Task> newList =  new ArrayList<>(todo_list);
+		for (Task task : todo_list) {
+			Task t = new Task(task);
+			newList.add(t);
+		}
+		return newList;
 	}
 	
 	public void changeName(String task, String name) {
